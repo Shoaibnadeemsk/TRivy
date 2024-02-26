@@ -17,4 +17,4 @@ jobs:
 
     - name: Run Trivy Scan
       run: |
-        trivy java-web-app
+        trivy python:3.4-alpine
