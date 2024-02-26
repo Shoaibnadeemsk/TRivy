@@ -1,0 +1,20 @@
+name: Trivy Scan
+
+on:
+  workflow_dispatch
+
+jobs:
+  trivy-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Install Trivy
+      run: |
+        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+    - name: Run Trivy Scan
+      run: |
+        trivy java-web-app
